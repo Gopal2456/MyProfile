@@ -96,6 +96,188 @@
         background: linear-gradient(90deg, #007acc 0%, #0095dd 100%);
       }
 
+      /* Skill card base style */
+      .skill-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .skill-card:hover::before {
+        left: 100%;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+        border-color: rgba(79, 70, 229, 0.3);
+      }
+
+      .dark .skill-card {
+        background: linear-gradient(
+          135deg,
+          rgba(17, 24, 39, 0.8),
+          rgba(31, 41, 55, 0.6)
+        );
+        border-color: rgba(129, 140, 248, 0.2);
+      }
+
+      .dark .skill-card:hover {
+        box-shadow: 0 20px 40px rgba(129, 140, 248, 0.15);
+        border-color: rgba(129, 140, 248, 0.4);
+      }
+
+      .skill-icon {
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 8px rgba(79, 70, 229, 0.2));
+      }
+
+      .skill-card:hover .skill-icon {
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 8px 16px rgba(79, 70, 229, 0.3));
+      }
+
+      .soft-skill {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .soft-skill::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .soft-skill:hover::before {
+        left: 100%;
+      }
+
+      .soft-skill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+      }
+
+      .dark .soft-skill {
+        background: linear-gradient(135deg, #818cf8, #a78bfa);
+      }
+
+      .section-title {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .dark .section-title {
+        background: linear-gradient(135deg, #818cf8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .category-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(249, 250, 251, 0.8)
+        );
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .dark .category-card {
+        background: linear-gradient(
+          135deg,
+          rgba(17, 24, 39, 0.9),
+          rgba(31, 41, 55, 0.8)
+        );
+        border-color: rgba(129, 140, 248, 0.1);
+      }
+
+      .category-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark .category-card:hover {
+        box-shadow: 0 12px 30px rgba(129, 140, 248, 0.1);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .stagger-1 {
+        animation-delay: 0.1s;
+      }
+      .stagger-2 {
+        animation-delay: 0.2s;
+      }
+      .stagger-3 {
+        animation-delay: 0.3s;
+      }
+      .stagger-4 {
+        animation-delay: 0.4s;
+      }
+      .stagger-5 {
+        animation-delay: 0.5s;
+      }
+      .stagger-6 {
+        animation-delay: 0.6s;
+      }
+      .stagger-7 {
+        animation-delay: 0.7s;
+      }
+
       /* Animation */
       @keyframes progressAnimation {
         0% {
@@ -202,13 +384,13 @@
 
         <!-- Mobile menu button -->
         <div class="md:hidden flex items-center">
-          <button
+          <!-- <button
             id="themeToggleMobile"
             class="p-2 mr-2 rounded-full bg-gray-100 dark:bg-gray-800 focus:outline-none"
           >
             <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
             <i class="fas fa-moon text-blue-300 hidden dark:inline"></i>
-          </button>
+          </button> -->
           <button
             id="mobileMenuBtn"
             class="text-gray-600 dark:text-gray-300 focus:outline-none"
@@ -282,12 +464,12 @@
           <h2
             class="text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-300 mb-6"
           >
-            Front-End Developer
+            Full-Stack Developer
           </h2>
-          
+
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
-            Building responsive and user-friendly interfaces with a focus on
-            performance and aesthetics.
+            Developing end-to-end web solutions with optimized backend logic,
+            efficient APIs, and responsive frontend design.
           </p>
           <div class="flex flex-wrap gap-4">
             <a
@@ -332,7 +514,7 @@
               class="w-60 h-60 md:w-60 md:h-60 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 dark:from-blue-500 dark:to-blue-700 animate-pulse absolute -z-10 blur-xl opacity-20"
             ></div>
             <img
-              src="/images/My image 2.png"
+              src="/images/My image 2.jpg"
               alt="Gopal Mahajan"
               class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"
             />
@@ -345,25 +527,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="md:w-1/2 md:mt-0 flex justify-center">
-          <div class="relative">
-            <div
-              class="w-60 h-60 md:w-60 md:h-60 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 dark:from-blue-500 dark:to-blue-700 animate-pulse absolute -z-10 blur-xl opacity-20"
-            ></div>
-            <img
-              src="/images/My image 2.png"
-              alt="Gopal Mahajan"
-              class="w-64 h-64 md:w-80 md:h-80 rounded-lg object-cover border-4 border-white dark:border-gray-800 shadow-xl"
-            />
-            <div
-              class="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg"
-            >
-              <div class="text-primary-light dark:text-primary-dark">
-                <i class="fas fa-code text-2xl"></i>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </section>
 
@@ -382,20 +545,20 @@
 
         <div class="flex justify-center w-auto items-center gap-12">
           <div class="md:w-1/2 mt-10 md:mt-0">
-            <h3 class="text-2xl font-bold mb-6">Front-End Developer</h3>
+            <h3 class="text-2xl font-bold mb-6">Full-Stack Developer</h3>
             <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I'm a motivated and detail-oriented Front-End Developer with a
-              solid foundation in web development technologies, including HTML,
-              CSS, JavaScript, and React. I'm skilled in building responsive and
-              user-friendly interfaces with a focus on performance and
-              aesthetics.
+              I'm a motivated and detail-oriented Full Stack Developer with a
+              solid foundation in the MERN stack (MongoDB, Express.js, React,
+              and Node.js). I specialize in building scalable, responsive, and
+              user-friendly web applications with a strong focus on performance,
+              clean architecture, and seamless user experience.
             </p>
             <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              Proficient in Git, modern tools like Vite, and UI frameworks such
-              as Material-UI and Tailwind CSS. I possess strong problem-solving
-              skills and an eagerness to learn new technologies. Looking for an
-              opportunity to contribute and grow in a dynamic development
-              environment.
+              Proficient in Git, modern development tools like Vite, and UI
+              frameworks such as Tailwind CSS and Material-UI. I have strong
+              problem-solving skills and a continuous drive to learn and adapt
+              to new technologies. Looking for an opportunity to contribute and
+              grow in a collaborative and fast-paced development environment.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -451,245 +614,254 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-xl md:text-2xl font-bold mb-2">
+    <section
+      id="skills"
+      class="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 min-h-screen"
+    >
+      <div class="container mx-auto px-4 max-w-7xl">
+        <!-- Header -->
+        <div class="text-center mb-20">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
             My
-            <span class="text-primary-light dark:text-primary-dark"
-              >Skills</span
-            >
+            <span class="section-title">Skills</span>
           </h2>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto mb-6"
+          >
+            A comprehensive toolkit of technologies and soft skills that I've
+            mastered to create exceptional digital experiences
+          </p>
           <div
-            class="w-24 h-0.5 bg-primary-light dark:bg-primary-dark mx-auto"
+            class="w-32 h-1 bg-gradient-to-r from-primary-light to-purple-600 mx-auto rounded-full"
           ></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div
-            class="max-w-lg w-full bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8"
-          >
-            <h3
-              class="text-xl font-semibold mb-6 text-gray-800 dark:text-white"
-            >
-              Technical Skills
-            </h3>
-
-            <div
-              class="mb-6 skill-container tooltip"
-              data-tooltip="HTML5, Semantic Markup, Accessibility"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >HTML</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >90%</span
-                >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Frontend Skills -->
+          <div class="category-card rounded-2xl p-8">
+            <div class="flex items-center mb-8">
+              <div
+                class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-palette text-white text-xl"></i>
               </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="html-color h-3 rounded-full progress-bar"
-                  style="width: 90%"
-                ></div>
-              </div>
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
+                Frontend & UI
+              </h3>
             </div>
 
-            <div
-              class="mb-6 skill-container tooltip"
-              data-tooltip="CSS3, Flexbox, Grid, Animations"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >CSS</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >85%</span
-                >
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-1 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fab fa-react text-5xl mb-4 text-cyan-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  React
+                </h4>
               </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="css-color h-3 rounded-full progress-bar"
-                  style="width: 85%"
-                ></div>
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-2 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fab fa-css3-alt text-5xl mb-4 text-blue-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Tailwind CSS
+                </h4>
               </div>
-            </div>
-
-            <div
-              class="mb-6 skill-container tooltip"
-              data-tooltip="ES6+, DOM Manipulation, Async/Await"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >JavaScript</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >80%</span
-                >
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-3 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fab fa-bootstrap text-5xl mb-4 text-purple-600 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Bootstrap
+                </h4>
               </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="js-color h-3 rounded-full progress-bar"
-                  style="width: 80%"
-                ></div>
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-4 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fas fa-paint-brush text-5xl mb-4 text-indigo-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Material-UI
+                </h4>
               </div>
-            </div>
-
-            <div
-              class="mb-6 skill-container tooltip"
-              data-tooltip="Hooks, Context API, Redux"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >React.js</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >85%</span
-                >
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-5 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fas fa-bolt text-5xl mb-4 text-yellow-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Vite
+                </h4>
               </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="react-color h-3 rounded-full progress-bar"
-                  style="width: 85%"
-                ></div>
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-6 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fab fa-git-alt text-5xl mb-4 text-orange-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">Git</h4>
               </div>
-            </div>
-
-            <div
-              class="mb-6 skill-container tooltip"
-              data-tooltip="Server-side Rendering, API Routes"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Next.js</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >75%</span
-                >
-              </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="nextjs-color h-3 rounded-full progress-bar"
-                  style="width: 75%"
-                ></div>
-              </div>
-            </div>
-
-            <div
-              class="skill-container tooltip"
-              data-tooltip="Type Safety, Interfaces, Generics"
-            >
-              <div class="flex justify-between mb-2">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >TypeScript</span
-                >
-                <span class="font-bold text-gray-700 dark:text-gray-300"
-                  >70%</span
-                >
-              </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  class="ts-color h-3 rounded-full progress-bar"
-                  style="width: 70%"
-                ></div>
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-7 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fab fa-github text-5xl mb-4 text-gray-700 dark:text-gray-300 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  GitHub
+                </h4>
               </div>
             </div>
           </div>
 
-          <div>
-            <h3 class="text-xl font-semibold mb-6">UI Libraries & Tools</h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+          <!-- Backend Skills -->
+          <div class="category-card rounded-2xl p-8">
+            <div class="flex items-center mb-8">
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mr-4"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fab fa-css3-alt"></i>
-                </div>
-                <h4 class="font-medium">Tailwind CSS</h4>
+                <i class="fas fa-server text-white text-xl"></i>
               </div>
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
+                Backend & Database
+              </h3>
+            </div>
 
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-12">
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="skill-card rounded-xl p-6 text-center stagger-1 opacity-0 animate-fade-in-up"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fab fa-bootstrap"></i>
-                </div>
-                <h4 class="font-medium">Bootstrap</h4>
+                <i
+                  class="fab fa-node-js text-5xl mb-4 text-green-600 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Node.js
+                </h4>
               </div>
-
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="skill-card rounded-xl p-6 text-center stagger-2 opacity-0 animate-fade-in-up"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fas fa-paint-brush"></i>
-                </div>
-                <h4 class="font-medium">Material-UI</h4>
+                <i
+                  class="fas fa-server text-5xl mb-4 text-gray-600 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Express.js
+                </h4>
               </div>
-
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="skill-card rounded-xl p-6 text-center stagger-3 opacity-0 animate-fade-in-up"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fab fa-git-alt"></i>
-                </div>
-                <h4 class="font-medium">Git</h4>
+                <i
+                  class="fas fa-database text-5xl mb-4 text-green-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  MongoDB
+                </h4>
               </div>
-
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="skill-card rounded-xl p-6 text-center stagger-4 opacity-0 animate-fade-in-up"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fab fa-github"></i>
-                </div>
-                <h4 class="font-medium">GitHub</h4>
+                <i class="fas fa-key text-5xl mb-4 text-red-500 skill-icon"></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  JWT Auth
+                </h4>
               </div>
-
               <div
-                class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300"
+                class="skill-card rounded-xl p-6 text-center stagger-5 opacity-0 animate-fade-in-up"
               >
-                <div
-                  class="text-4xl text-primary-light dark:text-primary-dark mb-4"
-                >
-                  <i class="fas fa-bolt"></i>
-                </div>
-                <h4 class="font-medium">Vite</h4>
+                <i
+                  class="fas fa-plug text-5xl mb-4 text-blue-600 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  REST APIs
+                </h4>
+              </div>
+              <div
+                class="skill-card rounded-xl p-6 text-center stagger-6 opacity-0 animate-fade-in-up"
+              >
+                <i
+                  class="fas fa-code text-5xl mb-4 text-purple-500 skill-icon"
+                ></i>
+                <h4 class="font-semibold text-gray-800 dark:text-white">
+                  Mongoose
+                </h4>
               </div>
             </div>
 
-            <h3 class="text-xl font-semibold mt-10 mb-6">Soft Skills</h3>
-            <div class="flex flex-wrap gap-3">
-              <span
-                class="px-4 py-2 bg-white dark:bg-gray-900 rounded-full shadow-md text-primary-light dark:text-primary-dark border border-primary-light dark:border-primary-dark"
-                >Communication</span
-              >
-              <span
-                class="px-4 py-2 bg-white dark:bg-gray-900 rounded-full shadow-md text-primary-light dark:text-primary-dark border border-primary-light dark:border-primary-dark"
-                >Problem-Solving</span
-              >
-              <span
-                class="px-4 py-2 bg-white dark:bg-gray-900 rounded-full shadow-md text-primary-light dark:text-primary-dark border border-primary-light dark:border-primary-dark"
-                >Decision Making</span
-              >
-              <span
-                class="px-4 py-2 bg-white dark:bg-gray-900 rounded-full shadow-md text-primary-light dark:text-primary-dark border border-primary-light dark:border-primary-dark"
-                >Attention to Detail</span
-              >
-              <span
-                class="px-4 py-2 bg-white dark:bg-gray-900 rounded-full shadow-md text-primary-light dark:text-primary-dark border border-primary-light dark:border-primary-dark"
-                >Teamwork</span
-              >
+            <!-- Soft Skills -->
+            <div>
+              <div class="flex items-center mb-6">
+                <div
+                  class="w-10 h-10 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center mr-3"
+                >
+                  <i class="fas fa-heart text-white"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 dark:text-white">
+                  Soft Skills
+                </h4>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <span class="soft-skill px-6 py-3 rounded-full font-medium"
+                  >Communication</span
+                >
+                <span class="soft-skill px-6 py-3 rounded-full font-medium"
+                  >Problem-Solving</span
+                >
+                <span class="soft-skill px-6 py-3 rounded-full font-medium"
+                  >Decision Making</span
+                >
+                <span class="soft-skill px-6 py-3 rounded-full font-medium"
+                  >Attention to Detail</span
+                >
+                <span class="soft-skill px-6 py-3 rounded-full font-medium"
+                  >Teamwork</span
+                >
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-primary-light dark:text-primary-dark mb-2"
+            >
+              13+
+            </div>
+            <div class="text-gray-600 dark:text-gray-300">Technologies</div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-primary-light dark:text-primary-dark mb-2"
+            >
+              5+
+            </div>
+            <div class="text-gray-600 dark:text-gray-300">Soft Skills</div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-primary-light dark:text-primary-dark mb-2"
+            >
+              2
+            </div>
+            <div class="text-gray-600 dark:text-gray-300">Main Categories</div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-4xl font-bold text-primary-light dark:text-primary-dark mb-2"
+            >
+              100%
+            </div>
+            <div class="text-gray-600 dark:text-gray-300">Commitment</div>
           </div>
         </div>
       </div>
@@ -1012,7 +1184,7 @@
             <div
               class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full px-3 py-1 text-sm"
             >
-              7.29 SGPA
+              7.00 CGPA
             </div>
           </div>
 
@@ -1272,6 +1444,26 @@
         const themeToggle = document.getElementById("themeToggle");
         const themeToggleMobile = document.getElementById("themeToggleMobile");
         const htmlElement = document.documentElement;
+
+        // Add intersection observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+            }
+          });
+        }, observerOptions);
+
+        // Observe all skill cards
+        document.addEventListener("DOMContentLoaded", () => {
+          const skillCards = document.querySelectorAll(".animate-fade-in-up");
+          skillCards.forEach((card) => observer.observe(card));
+        });
 
         // Check for saved theme preference or prefer-color-scheme
         const savedTheme = localStorage.getItem("theme");
